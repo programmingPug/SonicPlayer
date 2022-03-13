@@ -1,0 +1,61 @@
+<app-header></app-header>
+
+
+
+<mat-accordion>
+
+  <div *ngIf="isNotEmptyArray(alphaArtists)">
+    <div *ngFor="let artistsIndex of alphaArtists; index as z;">
+
+      <h2>{{artistsIndex.name}}</h2>
+
+      <mat-expansion-panel *ngFor="let artist of artistsIndex.artist; index as x;">
+        <mat-expansion-panel-header (click)="getArtist(artist.id)">
+          <mat-panel-title>
+            <span>{{artist.name}}</span>
+          </mat-panel-title>
+          <mat-panel-description>
+            <span>Albums {{artist.albumCount}}</span>
+          </mat-panel-description>
+
+        </mat-expansion-panel-header>
+
+        <div *ngIf="isNotEmptyObject(artistLibrary)">
+          <mat-accordion>
+            <mat-expansion-panel *ngFor="let album of artistLibrary.album; index as y;">
+              <mat-expansion-panel-header (click)="getAlbum(album.id)">
+                <span>{{album.name}}
+                  <mat-divider></mat-divider>
+                </span>
+              </mat-expansion-panel-header>
+
+              <div *ngIf="isNotEmptyObject(artistAlbum)">
+                <div *ngFor="let song of artistAlbum.song; index as y;">
+                  <div class="song_title">
+
+                    <span>{{song.title}}</span>
+
+                    <span class="actions">
+                      <fa-icon mat-button [icon]="faEllipsisH" [matMenuTriggerFor]="menu"></fa-icon>
+                      <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="playNow( song.id );">Play Now</button>
+                        <button mat-menu-item (click)="addNowPlaying( song.id );">Add to Playlist</button>
+                      </mat-menu>
+
+                    </span>
+
+
+                  </div>
+                </div>
+              </div>
+
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+
+      </mat-expansion-panel>
+
+    </div>
+  </div>
+
+</mat-accordion>

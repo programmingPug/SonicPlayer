@@ -1,0 +1,28 @@
+h2, span {
+	font-family: 'Roboto', Arial, Verdana, sans-serif;
+	color: #666;
+}
+
+mat-panel-description span{
+	width: 100%;
+	text-align: right;
+}
+
+.song_title{
+	margin: 15px 0px 0px 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.actions{
+	padding: 8px;
+	font-size: 1rem;
+	//border-radius: 50%;
+	color: #414760;
+	//box-shadow: 0 3px 6px rgba(33,33,33,.1), 0 3px 12px rgba(33,33,33,.15);
+}
+
+.content_spacer {
+	flex: 1 1 auto;
+}

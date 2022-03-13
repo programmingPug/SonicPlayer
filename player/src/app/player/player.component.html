@@ -1,0 +1,123 @@
+
+<div>
+
+    <div class="wrapper">
+      <div class="player__container">
+  
+        <div class="player__body">
+  
+          <div class="body__cover">
+  
+  
+            <div class="art_container">
+              <div>
+                <mat-toolbar>
+                  <fa-icon mat-button [matMenuTriggerFor]="menu" [icon]="faBars" size="lg"></fa-icon>
+  
+  
+                  <mat-menu #menu="matMenu">
+                    
+                    <button mat-menu-item routerLink="/library">
+                      <span>Library</span>
+                    </button>
+
+                    <button mat-menu-item routerLink="/playlists">
+                      <span>Playlists</span>
+                    </button>
+  
+                    <button mat-menu-item>
+                      <span>Podcasts</span>
+                    </button>
+
+                    <button mat-menu-item (click)="randomPlaylist()">
+                      <span>Random 25</span>
+                    </button>
+  
+                  </mat-menu>
+  
+                  <span class="example-spacer"></span>
+  
+                  <i class="fas fa-bars"></i>
+                  <i class="fas fa-search"></i>
+  
+                  <div id="searchBar">
+                    <fa-icon [icon]="faSearch" size="lg"></fa-icon>
+                  </div>
+  
+                </mat-toolbar>
+  
+                <div id="plass">
+                  <img src="{{currentAlbumCover}}" alt="Album cover" />
+                </div>
+                
+              </div>
+            </div>
+            
+            <div id="progressSlider">
+            <mat-slider
+              [max]="songDuration"
+              [min]="min"
+              [step]="step"
+              [thumbLabel]="thumbLabel"
+              [disabled] ="disabled"
+              [displayWith]="formatLabel"
+              [value] = "currentTimeLocation"
+              (change)="test($event)"
+            ></mat-slider>
+            </div>
+
+          </div>
+  
+          <div class="body__info">
+            <div class="info__album">{{currentSong.album}}</div>
+            <div class="info__song">{{currentSong.title}}</div>
+            <div class="info__artist">{{currentSong.artist}}</div>
+          </div>
+  
+          <div class="body__buttons">
+            <ul class="list player_actions">
+              <li (click)="previousSong()">
+                <fa-icon mat-button [icon]="faStepBackward"></fa-icon>
+              </li>
+              <li (click)="audioToggle()">
+                <fa-icon mat-button *ngIf="audioX.audioBoi.paused;" [icon]="faPlay"></fa-icon>
+                <fa-icon mat-button *ngIf="!audioX.audioBoi.paused;" [icon]="faPause"></fa-icon>
+              </li>
+              <li (click)="nextSong()">
+                <fa-icon mat-button [icon]="faStepForward"></fa-icon>
+              </li>
+            </ul>
+          </div>
+        </div>
+  
+        <div class="player__footer">
+          <div>
+          <ul class="list footer_actions">
+            <li>
+              <a href="#" class="list__link">
+                <fa-icon mat-button [icon]="faHeart"></fa-icon>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="list__link">
+                <fa-icon mat-button [icon]="faRandom"></fa-icon>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="list__link">
+                <fa-icon mat-button [icon]="faUndo"></fa-icon>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="list__link">
+                <fa-icon mat-button [icon]="faEllipsisH"></fa-icon>
+              </a>
+            </li>
+          </ul>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  
+  </div>
