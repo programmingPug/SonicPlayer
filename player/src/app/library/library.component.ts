@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Output, EventEmitter } from '@angular/core';
 import { SubsonicService } from '../services/subsonic.service';
 import { AudioService } from '../services/audio.service';
 
@@ -19,6 +19,8 @@ export class LibraryComponent implements OnInit {
   alphaArtists: any[] = [];
 	artistLibrary: any = {};
 	artistAlbum: any = {};
+
+	
 
   constructor( private subsonicService: SubsonicService, private audioService: AudioService ) { }
 
@@ -58,7 +60,8 @@ export class LibraryComponent implements OnInit {
 	
 	async addNowPlaying( songId: number )
 	{
-		await this.audioService.addNowPlaying( songId );
+		//await this.audioService.addNowPlaying( songId );
+		///this.newItemEvent.emit( songId );
 	}
   
   isNotEmptyArray( array : any ){

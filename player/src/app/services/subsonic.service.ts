@@ -12,8 +12,8 @@ export class SubsonicService {
 
 	public audioBoiInfo: Song;
 
-	private userName: string = `xxx`;
-	private password: string = `xxx`;
+	private userName: string = `apptesting`;
+	private password: string = `Ckoch198811!`;
 	private apiVersion: string = `1.12.0`;
 	private appName: string = `MPlayer`;
 	private dataFormat: string = `json`;
@@ -21,9 +21,9 @@ export class SubsonicService {
 	
 
 	/* Can be changed to your local instance or left for now till setting are added. */
-	//private baseUrl: string = `http://localhost:4040/rest/`;
+	private baseUrl: string = `http://localhost:4040/rest/`;
 	//private baseUrl: string = `http://xxx.subsonic.org/rest/`;
-	private baseUrl: string = `http://xxx.subsonic.org/rest/`;
+	///private baseUrl: string = `http://xxx.subsonic.org/rest/`;
 	//private baseUrl: string = `http://192.168.1.146:4040/rest/`;
 
 	/* Might not need leave for now incase we offer other services. */

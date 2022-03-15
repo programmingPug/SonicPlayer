@@ -4,7 +4,7 @@ import { SubsonicService } from './subsonic.service';
 import { Song } from '../models/song';
 import { Playlist } from '../models/playlist';
 
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +23,11 @@ export class AudioService {
     duration: 0
   };
 
+  private emitChangeSource = new Subject<any>();
+
   public nowPlayingList: Playlist[] = [];
+
+  changeEmitted$ = this.emitChangeSource.asObservable();
 
   constructor(private subsonicService: SubsonicService) {
 
@@ -41,9 +45,17 @@ export class AudioService {
     this.audioBoi.src = await this.subsonicService.getStream(songId);
     //this.audioBoiInfo = await this.subsonicService.getSongInfo(songId);
 
-    this.audioBoi.play();
+    //this.audioBoi.play();
+    // Observable string streams
+
+    //changeEmitted$ = this.emitChangeSource.asObservable();
+   this.emitChange(this.audioBoi.src);
 
   }
+
+  emitChange(change: any) {
+    this.emitChangeSource.next(change);
+}
 
   async continueAudioBoi() {
     this.audioBoi.play();

@@ -14,7 +14,7 @@ import {MatSliderModule} from '@angular/material/slider';
 
 import { SocketService } from './services/socket.service';
 import { SubsonicService } from './services/subsonic.service';
-import { AudioService } from './services/audio.service';
+////import { AudioService } from './services/audio.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
@@ -51,7 +51,7 @@ import { PlaylistComponent } from './playlist/playlist.component';
 		MatDividerModule,
 		MatSliderModule
 	],
-	providers: [SocketService, SubsonicService, AudioService],
+	providers: [SocketService, SubsonicService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
